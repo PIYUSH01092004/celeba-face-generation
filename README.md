@@ -5,9 +5,9 @@ This repository contains a PyTorch implementation of a **Vanilla Generative Adve
 ## 🛠️ Technical Stack & Architecture
 * **Framework:** PyTorch & Torchvision
 * **Dataset:** CelebA (aligned and cropped)
-* **Data Pipeline:** Custom PyTorch `ImageProcessor` (Dataset/DataLoader wrapper)[cite: 1] executing a center crop to $178 \times 178$, downsampling to $64 \times 64$, tensor conversion, and $[-1, 1]$ normalization.
+* **Data Pipeline:** Custom PyTorch `ImageProcessor` (Dataset/DataLoader wrapper) executing a center crop to $178 \times 178$, downsampling to $64 \times 64$, tensor conversion, and $[-1, 1]$ normalization.
 * **Generator:** A fully connected (dense) sequential network expanding a 100-dimensional latent vector ($z$) through hidden layers (256 $\rightarrow$ 512 $\rightarrow$ 1024 nodes) with ReLU activations, outputting a reshaped 3-channel image tensor via a `Tanh` activation function.
-* **Discriminator:** A fully connected network that flattens the input image tensor and passes it through decreasing dense layers with `LeakyReLU` activations ($0.2$ slope)[cite: 1]. A final `Sigmoid` layer outputs the scalar probability of the image being real.
+* **Discriminator:** A fully connected network that flattens the input image tensor and passes it through decreasing dense layers with `LeakyReLU` activations ($0.2$ slope). A final `Sigmoid` layer outputs the scalar probability of the image being real.
 * **Optimization:** Binary Cross-Entropy Loss (`BCELoss`) optimized via the Adam optimizer with a learning rate of $0.0002$ and hyperparameter $\beta_1 = 0.5$ to stabilize adversarial training.
 
 ## 📊 Project Status & Limitations
